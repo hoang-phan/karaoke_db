@@ -7,7 +7,7 @@ class DataLinksController < ApplicationController
 
   def data_links
     DataLink.all.map do |data_link|
-      data_link.attributes.slice(*%w(vol link)).merge(updated_at: data_link.updated_at.to_i)
+      data_link.attributes.slice(*%w(vol link stype)).merge(updated_at: data_link.updated_at.to_i)
     end
   end
 end
