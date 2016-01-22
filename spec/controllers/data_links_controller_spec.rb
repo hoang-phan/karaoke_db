@@ -7,15 +7,17 @@ describe DataLinksController, type: :controller do
         {
           'vol' => vol,
           'link' => link,
+          'stype' => type,
           'updated_at' => data_link.updated_at.to_i
         }
       ]
     end
 
     let(:json) { JSON(response.body) }
-    let!(:data_link) { create(:data_link, vol: vol, link: link) }
+    let!(:data_link) { create(:data_link, vol: vol, link: link, stype: type) }
     let(:vol) { 1 }
     let(:link) { 'http://test.com' }
+    let(:type) { 'type' }
 
     it 'returns correct json' do
       get :index

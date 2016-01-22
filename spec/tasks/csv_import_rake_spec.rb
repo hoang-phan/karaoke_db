@@ -3,7 +3,7 @@ require 'rake'
 
 describe 'csv' do
   describe ':import_vols' do
-    let(:csv) { "vol,link\n1,http://dummy.com/vol_1.csv" }
+    let(:csv) { "vol,link,type\n1,http://dummy.com/vol_1.csv,type1" }
     let(:data_link) { DataLink.last }
     subject { Rake::Task["csv:import_vols"] }
 
@@ -19,6 +19,7 @@ describe 'csv' do
       }.to change(DataLink, :count).by 1
       expect(data_link.vol).to eq 1
       expect(data_link.link).to eq "http://dummy.com/vol_1.csv"
+      expect(data_link.stype).to eq "type1"
     end
   end
 end
