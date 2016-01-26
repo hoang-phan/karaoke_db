@@ -11,7 +11,7 @@ describe 'csv' do
       load File.expand_path("../../../lib/tasks/csv_import.rake", __FILE__)
       Rake::Task.define_task(:environment)
       expect_any_instance_of(Object).to receive(:open)
-      expect(Archive::Zip).to receive(:extract).with('links.zip', '.', :password => DBENV['link_password'])
+      expect(Archive::Zip).to receive(:extract).with('links.zip', '.', :password => ENV['link_password'])
       expect(CSV).to receive(:read).and_return(CSV.parse(csv, headers: true))
       expect(File).to receive(:delete).with('links.zip', 'links.csv')
     end

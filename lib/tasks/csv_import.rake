@@ -11,7 +11,7 @@ namespace :csv do
         file << open(ENV['link_url']).read
       end
 
-      Archive::Zip.extract('links.zip', '.', :password => DBENV['link_password'])
+      Archive::Zip.extract('links.zip', '.', :password => ENV['link_password'])
 
       csv = CSV.read('links.csv', headers: true)
       csv.each do |row|
