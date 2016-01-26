@@ -5,6 +5,8 @@ gem 'pg', '~> 0.15'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sidekiq'
 gem 'nokogiri'
+gem 'rubyzip'
+gem 'archive-zip'
 
 group :development, :test do
   gem 'byebug'
